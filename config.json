@@ -1,0 +1,17 @@
+{
+	"VERSION": "Alpha v.1.0",
+	"BOT_TOKEN": "ODEyMjk4NTg4NjcxMzExOTMy.YC-uAw.PDdPcBNZLka8ZqGVkz26F5lnUCc",
+	"PREFIX": "+",
+	"DEBUG": false,
+	"STARTUP_MSG": false,
+	"WELCOME_CHANNEL": "",
+    "VOTE_CHANNEL": "813008234460741662",
+    "ADMIN_CHANNEL": "804862124484329492",
+	"RULE_MSG": "",
+	"COLORS": {
+		"DEFAULT": "#0B0C15",
+		"DANGER": "#FF0000",
+		"INFO": "#0d6efd",
+        "SUCCESS": "#23bc42"
+	}
+}
