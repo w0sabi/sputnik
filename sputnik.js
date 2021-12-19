@@ -9,6 +9,7 @@ const $ = require( "jquery" )( window );
 const presences = [
     "mit Mondgestein",
     "mit einer Radionuklidbatterie",
+    "mit den Ventilen von Starliner",
     "wenhop?",
     "Kerbal Space Program",
     "Fußball mit Asteroiden",
@@ -43,10 +44,11 @@ function log(s) {
 function setStatus() {
     var status = presences[Math.floor(Math.random() * presences.length)];
     client.user.setActivity(status);
+    sys.log("Status changes to '" + status + "'")
 }
 
 function dbKeepAlive() {
-    let sql = "SELECT * FROM wiki LIMIT 1";
+    let sql = "SELECT * FROM server LIMIT 1";
     sys.db.query(sql, function(err, result) {
         if(err) throw err;
         if(result) {

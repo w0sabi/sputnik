@@ -3,6 +3,6 @@ module.exports = {
     name: 'ping',
     description: 'Ping!',
     execute(message, args) {
-        sys.msg(message,'Pong. 🏓');
+        sys.reply(message,'Pong. 🏓');
     },
 };

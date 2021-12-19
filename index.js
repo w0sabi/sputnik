@@ -7,13 +7,15 @@ const $ = require( "jquery" )( window );
 const mysql = require("mysql");
 const db = mysql.createConnection({
     host: "core.hor1zon.io",
-    user: "rw_web",
-    password: "C@7fRak!MPoov9p@@Zn4wDeRy7b8Hiz.e-qXgTCxmATRB7kYdg",
-    database: "rw_public"
+    user: "sputnik_bot",
+    password: "D_vZBiokHfz!jckC*h7GUftgo9QdR3aMMn_!knBuEm!J7.mCEu",
+    database: "sputnik"
 });
+
 const presences = [
     "mit Mondgestein",
     "mit einer Radionuklidbatterie",
+    "mit den Ventilen von Starliner",
     "wenhop?",
     "Kerbal Space Program",
     "Fußball mit Asteroiden",
@@ -79,7 +81,7 @@ function stripTags(content) {
 }
 
 function dbKeepAlive() {
-    let sql = "SELECT * FROM wiki LIMIT 1";
+    let sql = "SELECT * FROM server LIMIT 1";
     db.query(sql, function(err, result) {
         if(err) throw err;
         if(result) {

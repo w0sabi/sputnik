@@ -5,13 +5,27 @@ const Crawler = require("crawler");
 module.exports = {
     db: mysql.createConnection({
         host: "core.hor1zon.io",
-        user: "rw_web",
-        password: "C@7fRak!MPoov9p@@Zn4wDeRy7b8Hiz.e-qXgTCxmATRB7kYdg",
-        database: "rw_public"
+        user: "sputnik_bot",
+        password: "D_vZBiokHfz!jckC*h7GUftgo9QdR3aMMn_!knBuEm!J7.mCEu",
+        database: "sputnik"
     }),
     config: require("./config.json"),
+    user: {
+      create: function (uid,server_id,created,joined) {
+          let sql = "INSERT INTO user (uid, server_id, created, joined) VALUES (" + uid + ", " + server_id + ", " + uid + ")";
+          this.db.query(sql,this.getTimestamp(), function(err, result) {
+              if(err) throw err;
+              if(result.length > 0) {
+
+              }
+          });
+      }  
+    },
     msg: function(message,content) {
         message.channel.send(content);
+    },
+    reply: function(message,content) {
+      message.reply(content);
     },
     msgToChn: function(id,content) {
         const msgchannel = client.channels.cache.get(id);
@@ -75,20 +89,5 @@ module.exports = {
     },
     reboot: function() {
         process.exit();
-    },
-    crawl: function (message,url) {
-        var Crawler = require("crawler");
-        output = "";
-        var c = new Crawler({
-            maxConnections : 10,
-            encoding: null,
-            callback : function (error, res, done) {
-                var $ = res.$;
-                output = String($("html").html());
-                done();
-            }
-        });
-        this.msg(message,output);
-        c.queue("https://rocketweek.net/");
     }
 };
