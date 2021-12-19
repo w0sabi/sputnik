@@ -2,6 +2,11 @@ const Discord = require("discord.js");
 const client = new Discord.Client();
 const mysql = require("mysql");
 const Crawler = require("crawler");
+const axios = require("axios");
+var FormData = require('form-data');
+var fs = require('fs');
+var http = require('http');
+
 module.exports = {
     db: mysql.createConnection({
         host: "core.hor1zon.io",
@@ -10,16 +15,18 @@ module.exports = {
         database: "sputnik"
     }),
     config: require("./config.json"),
-    user: {
-      create: function (uid,server_id,created,joined) {
-          let sql = "INSERT INTO user (uid, server_id, created, joined) VALUES (" + uid + ", " + server_id + ", " + uid + ")";
-          this.db.query(sql,this.getTimestamp(), function(err, result) {
-              if(err) throw err;
-              if(result.length > 0) {
-
-              }
-          });
-      }  
+    userExists: function(uid,server_id) {
+        axios({
+            method: 'GET',
+            url: 'https://api.orbyte.tv/auth/user/create?uid=' + uid + '&server_id=' + server_id + '&key=QrbV8hMnkLxvaYKZJQbmNDLVEsPtqqwg'
+        })
+            .then(function (response) {
+                console.log("User" + uid + " created in database.")
+            })
+            .catch(function (error) {
+                console.log("An error occured:");
+                console.log('HTTP error:' + error);
+            });
     },
     msg: function(message,content) {
         message.channel.send(content);

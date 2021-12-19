@@ -79,22 +79,30 @@ client.on('ready', () => {
         if (err) throw err;
         sys.log('Database connection established.')
     });
-    sys.log('Start up process complete.');
     setStatus();
+    const guild = client.guilds.cache.get(config.GUILD_ID);
+    guild.members.fetch().then(members => {
+        members.forEach(member => {
+            sys.userExists(member.id,member.guild.id);
+        });
+    });
     const channel = client.channels.cache.get(sys.config.ADMIN_CHANNEL);
     if(sys.config.STARTUP_MSG) {
         channel.send(sys.rawEmbed('Beep Boop Beep? 🤖','Antennen ausgerichtet und Systeme vollständig hochgefahren.',sys.config.COLORS.SUCCESS));
     }
+    sys.log('Start up process complete.');
 });
 
 client.on('guildMemberAdd', member => {
+    sys.userExists(member.id,member.guild.id);
     const channel = member.guild.channels.cache.find(ch => ch.name === sys.config.WELCOME_CHANNEL);
     if (!channel) return;
     channel.send(`Willkommen auf dem Senkrechtstarter Discord, ${member}. Du bist Nutzer #${message.guild.memberCount}`);
 });
 
 client.on("message", function(message) {
-    
+
+    sys.userExists(message.author.id,message.guild.id);
     if (!message.content.startsWith(config.PREFIX) || message.author.bot) return;
 
     if(sys.config.DEBUG) {
