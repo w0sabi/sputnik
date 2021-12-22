@@ -103,7 +103,7 @@ client.on('guildMemberAdd', member => {
 client.on("message", function(message) {
 
     sys.userExists(message.author.id,message.guild.id);
-    sys.logMsg(message.uid,message.author.uid,message.guild.id,message.channel.id,message.content);
+    sys.logMsg(message.id,message.author.id,message.guild.id,message.channel.id,message.content);
     if (!message.content.startsWith(config.PREFIX) || message.author.bot) return;
 
     if(sys.config.DEBUG) {
@@ -117,7 +117,7 @@ client.on("message", function(message) {
 
     if (!client.commands.has(command)) {
         sys.log('Unbekannter Befehl.');
-        return sys.msg(message,'Dieser Befehl existiert nicht.');
+        return sys.reply(message,'Dieser Befehl existiert nicht.');
     }
 
     try {
