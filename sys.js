@@ -48,8 +48,7 @@ module.exports = {
         })
             .then(function (response) {
                 console.log("Wiki article '" + query + "' searched.");
-                console.log(response.data);
-                return response['topics'];
+                return response.data['topics'];
             })
             .catch(function (error) {
                 console.log("An error occured:");
