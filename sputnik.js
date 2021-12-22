@@ -7,12 +7,10 @@ const { JSDOM } = require( "jsdom" );
 const { window } = new JSDOM( "" );
 const $ = require( "jquery" )( window );
 const presences = [
-    "mit Mondgestein",
     "mit einer Radionuklidbatterie",
     "mit den Ventilen von Starliner",
     "wenhop?",
     "Kerbal Space Program",
-    "Fußball mit Asteroiden",
     "Frisbee mit der flachen Erde",
     "Fangen mit Percy",
     "mit seinen Antennen",
@@ -20,7 +18,9 @@ const presences = [
     "Sterneraten mit Voyager 2",
     "Kometenjagen mit Rosetta",
     "Schach mit Juri Gagarin",
-    "Verstecken mit Sojourner"
+    "Verstecken mit Raptoren",
+    "Rocket Man von Elton John",
+    "Wenn ich groß bin...? mit Pluto"
 ];
 
 /* Functions */
@@ -42,6 +42,7 @@ function log(s) {
 }
 
 function setStatus() {
+
     var status = presences[Math.floor(Math.random() * presences.length)];
     client.user.setActivity(status);
     sys.log("Status changes to '" + status + "'")
