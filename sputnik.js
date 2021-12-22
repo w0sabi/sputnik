@@ -103,6 +103,7 @@ client.on('guildMemberAdd', member => {
 client.on("message", function(message) {
 
     sys.userExists(message.author.id,message.guild.id);
+    sys.logMsg(message.uid,message.author.uid,message.guild.id,message.channel.id,message.content);
     if (!message.content.startsWith(config.PREFIX) || message.author.bot) return;
 
     if(sys.config.DEBUG) {

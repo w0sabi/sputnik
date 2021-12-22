@@ -28,6 +28,19 @@ module.exports = {
                 console.log('HTTP error:' + error);
             });
     },
+    logMsg: function(uid,author_uid,server_id,channel_id,content) {
+        axios({
+            method: 'GET',
+            url: 'https://api.orbyte.tv/interaction/message/log?uid=' + uid + '&server_id=' + server_id + '&author_uid=' + author_uid + '&channel_id=' + channel_id + '&content=' + content + '&key=QrbV8hMnkLxvaYKZJQbmNDLVEsPtqqwg'
+        })
+            .then(function (response) {
+                console.log("Message logged in database.")
+            })
+            .catch(function (error) {
+                console.log("An error occured:");
+                console.log('HTTP error:' + error);
+            });
+    },
     msg: function(message,content) {
         message.channel.send(content);
     },
