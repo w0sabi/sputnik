@@ -124,8 +124,8 @@ client.on("message", function(message) {
     try {
         client.commands.get(command).execute(message, args);
     } catch (error) {
-        sys.log(error);
         sys.msg(message,'Ein Fehler ist aufgetreten.');
+        console.log(error);
     }
 
 });
