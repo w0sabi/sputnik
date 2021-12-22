@@ -47,8 +47,8 @@ module.exports = {
             url: 'https://raumfahrt-forum.de/search.json?q=' + query + '#wiki'
         })
             .then(function (response) {
-                console.log("Wiki article '" + query + "' searched.")
-                return response;
+                console.log("Wiki article '" + query + "' searched.");
+                return response['topics'];
             })
             .catch(function (error) {
                 console.log("An error occured:");
