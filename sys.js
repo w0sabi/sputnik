@@ -41,6 +41,20 @@ module.exports = {
                 console.log('HTTP error:' + error);
             });
     },
+    getWikiArticle: function(query) {
+        axios({
+            method: 'GET',
+            url: 'https://raumfahrt-forum.de/search.json?q=' + query + '#wiki'
+        })
+            .then(function (response) {
+                console.log("Wiki article '" + query + "' searched.")
+                return response;
+            })
+            .catch(function (error) {
+                console.log("An error occured:");
+                console.log('HTTP error:' + error);
+            });
+    },
     msg: function(message,content) {
         message.channel.send(content);
     },

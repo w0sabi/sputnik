@@ -6,17 +6,14 @@ module.exports = {
         if(!args.length) {
             sys.embed(message,'Wie können wir dir helfen?','Bitte benutze den Command so: ```+wiki KEYWORD```',sys.config.COLORS.INFO);
         } else {
-            let sql = "SELECT * FROM wiki WHERE title LIKE '%" + args[0] + "%'";
-            sys.db.query(sql,sys.getTimestamp(), function(err, result) {
-                if(err) throw err;
-                if(result.length > 0) {
-                    result.forEach(function myFunction(item, index) {
-                        sys.embed(message,result[index]['title'],sys.stripTags(result[index]['content']),sys.config.COLORS.DEFAULT,'https://rocketweek.net/wiki/' + result[index]['url'])
-                    });
-                } else {
-                    sys.embed(message,'Kein Suchergebnis gefunden','Wir konnten keinen Eintrag zu dem Begriff "' + args[0] + '" finden.',sys.config.COLORS.DANGER);
-                }
-            });
+            let result = sys.getWikiArticle(args[0]);
+            if(result.length > 0) {
+                result.forEach(function myFunction(item, index) {
+                    sys.embed(message,result[index]['title'],'Letztes Update:' + result[index]['last_posted_at'],sys.config.COLORS.DEFAULT,'https://raumfahrt-forum.de/t/' + result[index]['slug'])
+                });
+            } else {
+                sys.embed(message,'Kein Suchergebnis gefunden','Wir konnten keinen Eintrag zu dem Begriff "' + args[0] + '" finden.',sys.config.COLORS.DANGER);
+            }
         }
     },
 };
