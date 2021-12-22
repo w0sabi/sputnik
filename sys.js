@@ -21,7 +21,7 @@ module.exports = {
             url: 'https://api.orbyte.tv/auth/user/create?uid=' + uid + '&server_id=' + server_id + '&key=QrbV8hMnkLxvaYKZJQbmNDLVEsPtqqwg'
         })
             .then(function (response) {
-                console.log("User" + uid + " created in database.")
+                //console.log("User" + uid + " created in database.")
             })
             .catch(function (error) {
                 console.log("An error occured:");
@@ -41,14 +41,16 @@ module.exports = {
                 console.log('HTTP error:' + error);
             });
     },
-    getWikiArticle: function(query) {
+    getWikiArticle: function(query, callback) {
         axios({
             method: 'GET',
-            url: 'https://raumfahrt-forum.de/search.json?q=' + query + '#wiki'
+            url: 'https://raumfahrt-forum.de/search.json?q=' + query + ' category:wiki'
         })
             .then(function (response) {
                 console.log("Wiki article '" + query + "' searched.");
-                return response.data['topics'];
+                console.log('---------------------------------------');
+                console.log(response.data);
+                callback(response.data);
             })
             .catch(function (error) {
                 console.log("An error occured:");
