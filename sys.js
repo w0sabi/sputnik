@@ -47,9 +47,6 @@ module.exports = {
             url: 'https://raumfahrt-forum.de/search.json?q=' + query + ' category:wiki'
         })
             .then(function (response) {
-                console.log("Wiki article '" + query + "' searched.");
-                console.log('---------------------------------------');
-                console.log(response.data);
                 callback(response.data);
             })
             .catch(function (error) {
@@ -57,8 +54,27 @@ module.exports = {
                 console.log('HTTP error:' + error);
             });
     },
-    msg: function(message,content) {
-        message.channel.send(content);
+    checkUserPermissions: function(uid,server_id,permission, callback) {
+        axios({
+            method: 'GET',
+            url: 'https://api.orbyte.tv/auth/user/permission?uid=' + uid + '&server_id=' + server_id + '&permission=' + permission + '&key=QrbV8hMnkLxvaYKZJQbmNDLVEsPtqqwg'
+        })
+            .then(function (response) {
+                callback(response.data);
+            })
+            .catch(function (error) {
+                console.log("An error occured:");
+                console.log('HTTP error:' + error);
+            });
+    },
+    msg: function(message,content,reactions) {
+        message.channel.send(content).then(sendMessage => {
+            if(reactions) {
+                reactions.forEach(function myFunction(item) {
+                    sendMessage.react(item);
+                });
+            }
+        });
     },
     reply: function(message,content) {
       message.reply(content);
@@ -67,13 +83,13 @@ module.exports = {
         const msgchannel = client.channels.cache.get(id);
         msgchannel.send(content);
     },
-    embed: function (message,title,content,color,url) {
+    embed: function (message,title,content,color,url,reactions) {
         let embed = new Discord.MessageEmbed()
             .setTitle(title)
             .setColor(color)
             .setURL(url)
             .setDescription(content);
-        this.msg(message,embed);
+        this.msg(message,embed,reactions);
     },
     rawEmbed: function (title,content,color,url) {
         let output = new Discord.MessageEmbed()
