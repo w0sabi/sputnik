@@ -34,7 +34,7 @@ module.exports = {
             url: 'https://api.orbyte.tv/interaction/message/log?uid=' + uid + '&server_id=' + server_id + '&author_uid=' + author_uid + '&channel_id=' + channel_id + '&content=' + content + '&key=QrbV8hMnkLxvaYKZJQbmNDLVEsPtqqwg'
         })
             .then(function (response) {
-                console.log("Message logged in database.")
+                
             })
             .catch(function (error) {
                 console.log("An error occured:");
