@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="77d7d5ed-b28c-4af3-b8e0-07d9a3c754b7" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/commands/launch.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/launch.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sputnik.js" beforeDir="false" afterPath="$PROJECT_DIR$/sputnik.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sys.js" beforeDir="false" afterPath="$PROJECT_DIR$/sys.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -41,8 +38,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/commands/launch.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="312">
-              <caret line="13" column="42" lean-forward="true" selection-start-line="13" selection-start-column="42" selection-end-line="13" selection-end-column="42" />
+            <state relative-caret-position="696">
+              <caret line="29" column="117" selection-start-line="29" selection-start-column="117" selection-end-line="29" selection-end-column="117" />
             </state>
           </provider>
         </entry>
@@ -85,8 +82,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1912" />
-    <option name="y" value="-4" />
+    <option name="x" value="128" />
+    <option name="y" value="56" />
     <option name="width" value="1936" />
     <option name="height" value="1056" />
   </component>
@@ -191,15 +188,15 @@
       <workItem from="1640194625460" duration="22000" />
       <workItem from="1640194661204" duration="9607000" />
       <workItem from="1640258059479" duration="4393000" />
-      <workItem from="1640446511785" duration="2763000" />
+      <workItem from="1640446511785" duration="4378000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="98471000" />
+    <option name="totallyTimeSpent" value="100086000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1912" y="-4" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17750533" />
@@ -311,8 +308,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/commands/launch.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="13" column="42" lean-forward="true" selection-start-line="13" selection-start-column="42" selection-end-line="13" selection-end-column="42" />
+        <state relative-caret-position="696">
+          <caret line="29" column="117" selection-start-line="29" selection-start-column="117" selection-end-line="29" selection-end-column="117" />
         </state>
       </provider>
     </entry>
