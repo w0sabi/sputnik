@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="77d7d5ed-b28c-4af3-b8e0-07d9a3c754b7" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/commands/launch.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/launch.js" afterDir="false" />
-    </list>
+    <list default="true" id="77d7d5ed-b28c-4af3-b8e0-07d9a3c754b7" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -188,12 +186,12 @@
       <workItem from="1640194625460" duration="22000" />
       <workItem from="1640194661204" duration="9607000" />
       <workItem from="1640258059479" duration="4393000" />
-      <workItem from="1640446511785" duration="4378000" />
+      <workItem from="1640446511785" duration="4973000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="100086000" />
+    <option name="totallyTimeSpent" value="100681000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
