@@ -4,26 +4,27 @@ module.exports = {
     description: 'Next Rocket Launches',
     execute(message, args) {
         if(!args.length) {
-            let sql = "SELECT * FROM launches WHERE launch_time_start >= ? ORDER BY launch_time_start ASC";
-            sys.db.query(sql,sys.getTimestamp(), function(err, result) {
-                if(err) throw err;
-                if(result.length > 0) {
-                    sys.embed(message,'Nächster Raketenstart','**' + result[0]['title'] +
-                        '**\n\nVerbleibend: **' + sys.getRemainingTime(result[0]['launch_time_start']) + '**.' + '\n\n' + 'Weitere Raketenstarts gibt es hier: https://rocketweek.net/launches',sys.config.COLORS.DEFAULT);
-                } else {
-                    sys.msg(message,'Wir konnten keinen nächsten Raketenstart finden.');
-                }
+            sys.getNextLaunches(3,'',function(result) {
+                result = result['result'];
+                result.forEach(function myFunction(item, index) {
+                    var date = new Date(result[index]['sort_date'] * 1000);
+                    var fulltime = date.toLocaleString();
+                    if(result[index]['win_open'] === null) {
+                        result[index]['win_open'] = "Folgt"
+                        fulltime = "Folgt"
+                    }
+                    sys.embed(message,result[index]['name'],'Startfenster: ' + fulltime + '\nProvider: ' + result[index]['provider']['name'] + '\nRakete: ' + result[index]['vehicle']['name'],sys.config.COLORS.DEFAULT,'https://www.rocketlaunch.live/launch/' + result[index]['slug'])
+                });
             });
         } else {
-            let sql = "SELECT * FROM launches WHERE (launch_time_start >= ?) AND (provider LIKE '%" + args[0] + "%' OR title LIKE '%" + args[0] + "%') ORDER BY launch_time_start ASC";
-            sys.db.query(sql,sys.getTimestamp(), function(err, result) {
-                if(err) throw err;
-                if(result.length > 0) {
-                    sys.embed(message,'Nächster Raketenstart von ' + result[0]['provider'],'**' + result[0]['title'] +
-                        '**\n\nVerbleibend: **' + sys.getRemainingTime(result[0]['launch_time_start']) + '**.' + '\n\n' + 'Weitere Raketenstarts gibt es hier: https://rocketweek.net/launches',sys.config.COLORS.DEFAULT);
-                } else {
-                    sys.embed(message,'Kein Ergebnis','Wir konnten keinen nächsten Raketenstart von "' + args[0] + '" finden.',sys.config.COLORS.DANGER);
-                }
+            sys.getNextLaunches(3,args[0],function(result) {
+                result = result['result'];
+                result.forEach(function myFunction(item, index) {
+                    if(result[index]['win_open'] === null) {
+                        result[index]['win_open'] = "Folgt"
+                    }
+                    sys.embed(message,result[index]['name'],'Startfenster: ' + result[index]['win_open'] + '\nProvider: ' + result[index]['provider']['name'] + '\nRakete: ' + result[index]['vehicle']['name'],sys.config.COLORS.DEFAULT,'https://www.rocketlaunch.live/launch/' + result[index]['slug'])
+                });
             });
         }
     },

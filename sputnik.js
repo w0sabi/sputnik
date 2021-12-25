@@ -18,7 +18,7 @@ const presences = [
     "Sterneraten mit Voyager 2",
     "Kometenjagen mit Rosetta",
     "Schach mit Juri Gagarin",
-    "Verstecken mit Raptoren",
+    "Fangen mit Raptoren",
     "Rocket Man von Elton John",
     "Wenn ich groß bin...? mit Pluto"
 ];

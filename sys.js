@@ -67,6 +67,19 @@ module.exports = {
                 console.log('HTTP error:' + error);
             });
     },
+    getNextLaunches: function(limit,query,callback) {
+        axios({
+            method: 'GET',
+            url: 'https://fdo.rocketlaunch.live/json/launches?key=b8d148d6-b4c8-4736-b2f3-f3121410e647&limit=' + limit + '&search=' + query
+        })
+            .then(function (response) {
+                callback(response.data);
+            })
+            .catch(function (error) {
+                console.log("An error occured:");
+                console.log('HTTP error:' + error);
+            });
+    },
     msg: function(message,content,reactions) {
         message.channel.send(content).then(sendMessage => {
             if(reactions) {
