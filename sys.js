@@ -80,6 +80,19 @@ module.exports = {
                 console.log('HTTP error:' + error);
             });
     },
+    createTweet: function(tweet_id,tags,author) {
+        axios({
+            method: 'GET',
+            url: 'https://api.orbyte.tv/post/tweet?tweet_id=' + tweet_id + '&tags=' + tags + '&author=' + author
+        })
+            .then(function (response) {
+                callback(response.data);
+            })
+            .catch(function (error) {
+                console.log("An error occured:");
+                console.log('HTTP error:' + error);
+            });
+    },
     msg: function(message,content,reactions) {
         message.channel.send(content).then(sendMessage => {
             if(reactions) {
