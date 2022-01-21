@@ -3,6 +3,7 @@ const client = new Discord.Client();
 const mysql = require("mysql");
 const Crawler = require("crawler");
 const axios = require("axios");
+const { base64encode, base64decode } = require('nodejs-base64');
 var FormData = require('form-data');
 var fs = require('fs');
 var http = require('http');
@@ -31,7 +32,7 @@ module.exports = {
     logMsg: function(uid,author_uid,server_id,channel_id,content) {
         axios({
             method: 'GET',
-            url: 'https://api.orbyte.tv/interaction/message/log?uid=' + uid + '&server_id=' + server_id + '&author_uid=' + author_uid + '&channel_id=' + channel_id + '&content=' + btoa(content) + '&key=QrbV8hMnkLxvaYKZJQbmNDLVEsPtqqwg'
+            url: 'https://api.orbyte.tv/interaction/message/log?uid=' + uid + '&server_id=' + server_id + '&author_uid=' + author_uid + '&channel_id=' + channel_id + '&content=' + base64encode(content) + '&key=QrbV8hMnkLxvaYKZJQbmNDLVEsPtqqwg'
         })
             .then(function (response) {
                 
