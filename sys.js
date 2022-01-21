@@ -31,7 +31,7 @@ module.exports = {
     logMsg: function(uid,author_uid,server_id,channel_id,content) {
         axios({
             method: 'GET',
-            url: 'https://api.orbyte.tv/interaction/message/log?uid=' + uid + '&server_id=' + server_id + '&author_uid=' + author_uid + '&channel_id=' + channel_id + '&content=' + content + '&key=QrbV8hMnkLxvaYKZJQbmNDLVEsPtqqwg'
+            url: 'https://api.orbyte.tv/interaction/message/log?uid=' + uid + '&server_id=' + server_id + '&author_uid=' + author_uid + '&channel_id=' + channel_id + '&content=' + btoa(content) + '&key=QrbV8hMnkLxvaYKZJQbmNDLVEsPtqqwg'
         })
             .then(function (response) {
                 
