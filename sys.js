@@ -71,7 +71,7 @@ module.exports = {
     getNextLaunches: function(limit,query,callback) {
         axios({
             method: 'GET',
-            url: 'https://fdo.rocketlaunch.live/json/launches?key=b8d148d6-b4c8-4736-b2f3-f3121410e647&limit=' + limit + '&search=' + query
+            url: 'https://api.orbyte.tv/v1/launches?limit=' + limit + "&query=" + query
         })
             .then(function (response) {
                 callback(response.data);
