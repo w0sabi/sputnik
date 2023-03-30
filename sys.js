@@ -10,16 +10,16 @@ var http = require('http');
 
 module.exports = {
     db: mysql.createConnection({
-        host: "core.hor1zon.io",
-        user: "sputnik_bot",
-        password: "D_vZBiokHfz!jckC*h7GUftgo9QdR3aMMn_!knBuEm!J7.mCEu",
-        database: "sputnik"
+        host: "",
+        user: "",
+        password: "",
+        database: ""
     }),
     config: require("./config.json"),
     userExists: function(uid,server_id) {
         axios({
             method: 'GET',
-            url: 'https://api.orbyte.tv/auth/user/create?uid=' + uid + '&server_id=' + server_id + '&key=QrbV8hMnkLxvaYKZJQbmNDLVEsPtqqwg'
+            url: 'https://api.orbyte.tv/auth/user/create?uid=' + uid + '&server_id=' + server_id + '&key='
         })
             .then(function (response) {
                 //console.log("User" + uid + " created in database.")
@@ -32,7 +32,7 @@ module.exports = {
     logMsg: function(uid,author_uid,server_id,channel_id,content) {
         axios({
             method: 'GET',
-            url: 'https://api.orbyte.tv/interaction/message/log?uid=' + uid + '&server_id=' + server_id + '&author_uid=' + author_uid + '&channel_id=' + channel_id + '&content=' + base64encode(content) + '&key=QrbV8hMnkLxvaYKZJQbmNDLVEsPtqqwg'
+            url: 'https://api.orbyte.tv/interaction/message/log?uid=' + uid + '&server_id=' + server_id + '&author_uid=' + author_uid + '&channel_id=' + channel_id + '&content=' + base64encode(content) + '&key='
         })
             .then(function (response) {
                 
@@ -58,7 +58,7 @@ module.exports = {
     checkUserPermissions: function(uid,server_id,permission, callback) {
         axios({
             method: 'GET',
-            url: 'https://api.orbyte.tv/auth/user/permission?uid=' + uid + '&server_id=' + server_id + '&permission=' + permission + '&key=QrbV8hMnkLxvaYKZJQbmNDLVEsPtqqwg'
+            url: 'https://api.orbyte.tv/auth/user/permission?uid=' + uid + '&server_id=' + server_id + '&permission=' + permission + '&key='
         })
             .then(function (response) {
                 callback(response.data);
